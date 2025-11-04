@@ -19,18 +19,14 @@ import org.testng.annotations.*;
  */
 public class LoginBasicTest {
 	//IMPORTANT: Please download a Chrome driver and set this variable to the full path to the file
-	private final static String CHROME_DRIVER_FULL_PATH = "D:\\chrome downlaods\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe";
+	import io.github.bonigarcia.wdm.WebDriverManager;
 
-	//private final static String GECKO_DRIVER_FULL_PATH = "/Users/leonardolanni/Downloads/geckodriver";
-	private WebDriver driver;
+@BeforeTest
+public void setUp() {
+    WebDriverManager.chromedriver().setup();
+    driver = new ChromeDriver();
+}
 
-	@BeforeTest
-	public void setUp() {
-		System.setProperty("webdriver.chrome.driver", CHROME_DRIVER_FULL_PATH);
-		driver = new ChromeDriver();
-		//System.setProperty("webdriver.gecko.driver", GECKO_DRIVER_FULL_PATH);
-		//driver = new FirefoxDriver();
-	}
 
 	@AfterTest
 	public void tearDown() {
